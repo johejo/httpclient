@@ -2,12 +2,13 @@ import requests
 import sys
 
 chunk_size = int(sys.argv[1])
-url = 'http://www.net.info.hiroshima-cu.ac.jp'
+url = sys.argv[2]
 
 byte = 0
 text = ''
 initial = 1
 size = 0
+n = 0
 
 while True:
     headers = {'Range': 'bytes={0}-{1}'.format(byte, byte + chunk_size - 1)}
@@ -18,9 +19,9 @@ while True:
         size = int(cr[cr.find('/') + 1:])
         initial = 0
 
+    text += r.text
+
     if byte >= size:
         break
-
-    text += r.text
 
 print(text)
