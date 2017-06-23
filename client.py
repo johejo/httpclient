@@ -7,7 +7,7 @@ def main():
     url = sys.argv[2]
 
     length = int(get_length(url))
-    text = get_text(url, num, length)
+    text = get_content(url, num, length)
     print(text)
 
 
@@ -16,7 +16,7 @@ def get_length(url):
     return r.headers['Content-Length']
 
 
-def get_text(url, num, length):
+def get_content(url, num, length):
     text = ''
     byte = 0
     chunk_size = int(length / num)
