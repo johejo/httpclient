@@ -8,7 +8,6 @@ byte = 0
 text = ''
 initial = 1
 size = 0
-n = 0
 
 while True:
     headers = {'Range': 'bytes={0}-{1}'.format(byte, byte + chunk_size - 1)}
