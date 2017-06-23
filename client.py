@@ -28,4 +28,8 @@ while True:
         text = r.text
         break
 
+    else:
+        print(r.status_code)
+        break
+
 print(text)
