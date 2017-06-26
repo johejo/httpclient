@@ -6,14 +6,17 @@ def main():
     num = int(sys.argv[1])
     url = sys.argv[2]
 
-    length = int(get_length(url))
+    r = head(url)
+    length = int(r.headers['Content-Length'])
+    # c_type = r.headers['Content-Type']
+
     text = get_content(url, num, length)
     print(text)
 
 
-def get_length(url):
+def head(url):
     r = requests.head(url)
-    return r.headers['Content-Length']
+    return r
 
 
 def get_content(url, num, length):
@@ -26,7 +29,7 @@ def get_content(url, num, length):
         num += 1
 
     for i in range(num):
-        if i == num:
+        if i == num - 1:
             chunk_size = reminder
 
         headers = {'Range': 'bytes={0}-{1}'.format(byte, byte + chunk_size - 1)}
