@@ -29,7 +29,7 @@ def get_content(url, num, length):
         num += 1
 
     for i in range(num):
-        if i == num - 1:
+        if i == num - 1 and reminder != 0:
             chunk_size = reminder
 
         headers = {'Range': 'bytes={0}-{1}'.format(byte, byte + chunk_size - 1)}
